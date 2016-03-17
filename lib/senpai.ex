@@ -13,6 +13,9 @@ defmodule Senpai do
   end
 
   def run do
-    {:ok, _} = Plug.Adapters.Cowboy.http Senpai.Router, []
+    {:ok, _} = Plug.Adapters.Cowboy.https Senpai.Router, [],
+      port: System.get_env("SENPAI_PORT"),
+      keyfile: System.get_env("SENPAI_SSL_KEY"),
+      certfile: System.get_env("SENPAI_SSL_CERT")
   end
 end
