@@ -11,12 +11,13 @@ defmodule Senpai.Mixfile do
   end
 
   def application do
-    [applications: [:logger],
+    [applications: [:logger, :plug],
      mod: {Senpai, []}]
   end
 
   defp deps do
-    [{:cowboy, "~> 1.0.0"},
+    [{:dialyze, "~> 0.2.0"},
+     {:cowboy, "~> 1.0.0"},
      {:plug, "~> 0.12"},
      {:poison, "~> 1.4.0"}]
   end

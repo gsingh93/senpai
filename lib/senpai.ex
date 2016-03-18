@@ -13,8 +13,9 @@ defmodule Senpai do
   end
 
   def run do
+    {port, _} = Integer.parse(System.get_env("SENPAI_PORT"))
     {:ok, _} = Plug.Adapters.Cowboy.https Senpai.Router, [],
-      port: System.get_env("SENPAI_PORT"),
+      port: port,
       keyfile: System.get_env("SENPAI_SSL_KEY"),
       certfile: System.get_env("SENPAI_SSL_CERT")
   end
